@@ -6,15 +6,20 @@ import { getTasks } from "../services/api";
 function List() {
     const [tasks, setTasks] = useState([]);
 
+    const loadTasks = async () => {
+        const data = await getTasks();
+        setTasks(data);
+    };
+
     useEffect(() => {
-        getTasks().then(setTasks);
+        loadTasks();
     }, []);
 
     return (
         <div>
             <h2>Task List</h2>
             {tasks.map((task) => (
-                <ItemCard key={task.id} task={task} />
+                <ItemCard key={task.id} task={task} onTaskUpdated={loadTasks} />
             ))}
         </div>
     );
