@@ -1,0 +1,21 @@
+// services/api.js
+const API_URL = "http://localhost:5000/api/tasks"; // backend endpoint
+
+export async function getTasks() {
+    const res = await fetch(API_URL);
+    return res.json();
+}
+
+export async function getTaskById(id) {
+    const res = await fetch(`${API_URL}/${id}`);
+    return res.json();
+}
+
+export async function addTask(task) {
+    const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(task),
+    });
+    return res.json();
+}
