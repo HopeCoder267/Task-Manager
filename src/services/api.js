@@ -1,9 +1,8 @@
-// services/api.js
 // Centralized API service for Task Manager frontend
-// CRUD functions for to interact with backend (Express + PostgreSQL)
+// CRUD functions to interact with backend (Express + PostgreSQL)
 
-// const API_URL = "http://localhost:5000/api/tasks"; // Backend base URL
-const API_URL = "https://task-manager-backend-1-xp7q.onrender.com/api/tasks"; // hosted backend
+// Hosted backend URL from Render logs
+const API_URL = "https://task-manager-backend-x6xm.onrender.com/api/tasks";
 
 // ------------ READ ALL TASKS --------------------
 export async function getTasks() {
