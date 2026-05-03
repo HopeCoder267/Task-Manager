@@ -1,22 +1,167 @@
-/* ItemCard.css */
+/* ItemCard.css - Modern responsive task card styling */
+
+/* Main task card container */
 .item-card {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin: 1rem 0;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    height: fit-content;
 }
 
+/* Card hover effects */
+.item-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+}
+
+/* Card header section */
 .item-card h3 {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 var(--spacing-md) 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+    display: -webkit-box;
+    display: box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
 }
 
+/* Card description text */
+.item-card p {
+    margin: 0 0 var(--spacing-md) 0;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    display: box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Status badge container */
+.item-card .status-container {
+    margin: var(--spacing-md) 0;
+}
+
+/* Action link styling */
 .item-card a {
-    color: #007bff;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+    color: var(--primary-color);
     text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s ease-in-out;
 }
 
 .item-card a:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
+    transform: translateX(2px);
+}
+
+/* Card footer with actions */
+.item-card .card-footer {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+/* Responsive grid layout for list page */
+.item-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) 0;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .item-card {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .item-card h3 {
+        font-size: 1rem;
+    }
+    
+    .item-card p {
+        font-size: 0.8125rem;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+    
+    .item-card-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md) 0;
+    }
+    
+    .item-card .card-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .item-card a {
+        justify-content: center;
+    }
+}
+
+/* Tablet responsive adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .item-card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+/* Card priority indicator */
+.item-card.priority-high::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--danger-color);
+}
+
+.item-card.priority-medium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #f59e0b;
+}
+
+.item-card.priority-low::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--success-color);
 }
